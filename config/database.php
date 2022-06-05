@@ -51,9 +51,11 @@ return [
             'database' => env('heroku_9e06d4f96caf141'),
             'username' => env('bb938cae374b00'),
             'password' => env('abfe8688'),
-            'charset'   => 'utf8',
-        'collation' => 'utf8_unicode_ci',
-        'prefix'    => '',
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'strict' => true,
+            'engine' => null,
         ],
 
         'pgsql' => [
