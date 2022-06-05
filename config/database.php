@@ -45,17 +45,26 @@ return [
 
         'mysql' => [
             'driver' => 'mysql',
-            // 'url' => env('mysql://bb938cae374b00:abfe8688@us-cdbr-east-05.cleardb.net/heroku_9e06d4f96caf141?reconnect=true'),
-            'host' => env('us-cdbr-east-05.cleardb.net'),
+            'url' => env('DATABASE_URL'),
+            'host' => env('DB_HOST', 'us-cdbr-east-05.cleardb.net'),
             'port' => env('DB_PORT', '3306'),
-            'database' => env('heroku_9e06d4f96caf141'),
-            'username' => env('bb938cae374b00'),
-            'password' => env('abfe8688'),
+            'database' => env('DB_DATABASE', 'heroku_9e06d4f96caf141'),
+            'username' => env('DB_USERNAME', 'bb938cae374b00'),
+            'password' => env('DB_PASSWORD', 'abfe8688'),
+            'unix_socket' => env('DB_SOCKET', ''),
+
+
+
+            // 'url' => env('mysql://bb938cae374b00:abfe8688@us-cdbr-east-05.cleardb.net/heroku_9e06d4f96caf141?reconnect=true'),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
             'prefix' => '',
+            'prefix_indexes' => true,
             'strict' => true,
             'engine' => null,
+            'options' => extension_loaded('pdo_mysql') ? array_filter([
+                PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
+            ]) : [],
         ],
 
         'pgsql' => [
